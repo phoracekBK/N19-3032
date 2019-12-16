@@ -1,0 +1,64 @@
+** Specifikace **
+
+Napojení aplikátoru na FTP komunikaci, cyklické hlídání vstupního hotfolderu s konfiguračním souborem, který nastaví parametry lepení. Toto je propojené s generování výstupních dat. 
+Změna oproti předchozí verzi je, že ve stupním hotfolderu se může nacházet více souborů s různým jménem. 
+Je třeba pozměnit způsob načítání vstupních dat kdy je kontrolován každý soubor zvlášť
+Důležité je že je třeba prohledávat hotfolder i poté co je jsou z ftp převzata data
+
+
+** Bussines požadavky **
+* načítání dat z různých stanic při výpadku
+* manuální výběř zdroje dat pro stanici
+* manuální režim
+* servisní režim
+* režim gral
+* pokud je stanice ve stavu lepení, není zaznamenávána hodnota pro automatické nebo manuální odpouštění (zkreslovalo by to výsledek měření objemu)
+
+** Uživatelské požadavky **
+* vizualizace procesu lepení na externí obrazovce 
+
+** Funkční požadavky **
+* stanice musí prohledávat hotfolder i v případě že jsou data již načtená v paměti plc, pouze se nebude dotazovat již dostupný zdroj
+* ve vizualizaci defaultně zobrazit okno se zeznamem dostupných zdrojů konfigurací z FTP pro manuální výběr + potvrzovací hláška výběru
+* 
+
+** Systémové požadavky **
+* WINCC runtime V15
+
+
+** poznamky k novému aplikátoru **
+
+ze X stanovišť bude přicházet soubor s konfigurací s různými názvy specifickými pro dané stanoviště do jednoho IN adresáře. Je třeba testovat na přítomnost X různých souborů 
+Je třeba vyřešit jak rozhodovat ze kterého pracoviště požadavek přišel
+-> zobrazit nabýdku dostupných konfiguračních souborů z daných stanic pomocí tlačítek + potvrzení výběru
+-> bude se kontrolovat přítomnost x různých souborů s různým jménem
+
+
+upravit servisní režim komunikace s gralem:
+ číselná hodnota = kontrolovaná aplikace lepidla
+ nula = servisní režim s udáním důvodu
+ řetězec MAN = režim bez horní hranice množství lepidla s referencí naneseného lepidla posílaná do gralu
+
+přidat manuální odpouštění:
+namíchání směsi
+propláchnutí mixéru
+
+** TODO **
+* naprogramovat pracovní cyklus pro konfiguraci stanice z ftp
+* nakopírovat knihovnu pro automatické odpouštění
+* naprogramovat manuální odpouštění v režimu propláchnutí mixéru a namíchání směsy
+* napojit tlačítka pro manuální odpuštění lepidla do HMI
+* napojit tlačítka pro manuální odpuštění lepidla do vizualizace
+* upravit vizualizaci pro manuální výběr zdroje konfigurace pro stanici
+
+
+
+** DONE **
+
+* nakopírovat knihovnu pro ftp komunikaci
+* nakopírovat vizualizaci wincc
+* nakopírovat kartu s nastavením do HMI
+* vytvořit datové struktury pro uchovávání vstupních dat z FTP
+
+
+
