@@ -1,0 +1,11 @@
+
+** TODO **
+* opravit mechanismus kontrolovaného nanášení v režimu grálu
+* kontinuální odesílání množství odpuštěného lepidla do grálu - SKLENI/LOG_odpousteni
+
+
+** DONE **
+* úprava režimu komunikace s FTP i při vypnuté lepící technologii a řídících obvodech
+* opravit načítíní požadavků z grálu
+* opravit komunikaci s pracovištěmi S5 a S6
+
